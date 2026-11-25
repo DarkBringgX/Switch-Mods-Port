@@ -23,7 +23,7 @@ jobs:
 
       - name: Extract source code
         run: |
-          unzip -q Mods Port.zip -d source
+          unzip -q MHRPortTool_source.zip -d source
           ls -la source
 
       - name: Build debug APK
@@ -35,3 +35,4 @@ jobs:
         with:
           name: MHRPortTool-debug-apk
           path: source/app/build/outputs/apk/debug/*.apk
+          
