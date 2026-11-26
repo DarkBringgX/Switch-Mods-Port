@@ -28,11 +28,12 @@ jobs:
 
       - name: Build debug APK
         run: |
-          cd source
+          F=$(find source -maxdepth 3 \( -name settings.gradle -o -name settings.gradle.kts \) | head -1)
+          echo "Found: $F"
+          cd "$(dirname "$F")"
           gradle assembleDebug --no-daemon
 
       - uses: actions/upload-artifact@v4
         with:
           name: MHRPortTool-debug-apk
-          path: source/app/build/outputs/apk/debug/*.apk
-          
+          path: source/**/build/outputs/apk/debug/*.apk
